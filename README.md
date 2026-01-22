@@ -2,11 +2,11 @@
 
 A visual blueprint for building a unified security engineering platform that integrates security throughout the software development lifecycle.
 
-<div style="text-align: center;">
+<p align="center">
   <a href="https://dgaliata.github.io/security-platform/">
     <img src="https://res.cloudinary.com/dcu6gtw2y/image/upload/v1769059690/sec-platform-blog-img_xvod1l.png" alt="Security Platform" />
   </a>
-</div>
+</p>
 
 ## Overview
 
