@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Engineering Platform</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --accent-blue: #58a6ff;
+            --accent-purple: #bc8cff;
+            --accent-green: #3fb950;
+            --accent-orange: #d29922;
+            --accent-red: #f85149;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.5;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: linear-gradient(90deg, #fff, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header h1 i {
+            -webkit-text-fill-color: var(--accent-blue);
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.4));
+        }
+
+        .header p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Platform Layers */
+        .layer {
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--bg-card);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .layer-header {
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-blue);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .card h3 { margin: 0 0 10px 0; font-size: 1rem; color: #fff; }
+        .card p { margin: 0 0 15px 0; font-size: 0.9rem; color: var(--text-dim); }
+        
+        .tech-pill {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            background: rgba(88, 166, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        /* Connecting Spacers */
+        .spacer {
+            text-align: center;
+            padding: 15px 0;
+            color: var(--border-color);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        /* Pipeline Section */
+        .pipeline-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: #090c10;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .pipeline-section h2 { 
+            text-align: center; 
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .pipeline-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            transition: border-color 0.3s;
+        }
+
+        .flow-step:hover {
+            border-color: var(--border-color);
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin-right: 25px;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
+        }
+
+        .step-content strong { 
+            color: var(--accent-blue); 
+            display: block; 
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        
+        .step-content span { font-size: 0.95rem; color: var(--text-dim); }
+
+        .tag-logic {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-shield-halved"></i> Security Engineering Platform</h1>
+        <p>Cloud-Native Security Architecture</p>
+    </div>
+
+    <div class="layer">
+        <div class="layer-header" style="color: var(--accent-purple);">
+            <i class="fas fa-chess-king"></i> 01. Strategy & Design
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Threat Modeling</h3>
+                <p>STRIDE analysis and architectural risk assessments built into the SDLC.</p>
+                <span class="tech-pill">OWASP Threat Dragon / PyTM</span>
+            </div>
+            <div class="card">
+                <h3>Policy as Code</h3>
+                <p>Governance guardrails enforced via rego policies across all layers.</p>
+                <span class="tech-pill">Open Policy Agent (OPA)</span>
+            </div>
+            <div class="card">
+                <h3>Compliance Automation</h3>
+                <p>Real-time mapping of technical controls to SOC2/ISO27001 frameworks.</p>
+                <span class="tech-pill">Vanta / Custom Dashboards</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"><i class="fas fa-chevron-down"></i></div>
+
+    <div class="layer">
+        <div class="layer-header" style="color: var(--accent-blue);">
+            <i class="fas fa-boxes-stacked"></i> 02. Secure Development & Supply Chain
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>SAST & Secrets Scanning</h3>
+                <p>Static analysis and credential leak prevention in the local IDE and CI.</p>
+                <span class="tech-pill">Semgrep / TruffleHog</span>
+            </div>
+            <div class="card">
+                <h3>SCA & SBOM</h3>
+                <p>Software Bill of Materials and third-party dependency vulnerability tracking.</p>
+                <span class="tech-pill">Trivy / Dependency-Track</span>
+            </div>
+            <div class="card">
+                <h3>Infrastructure as Code</h3>
+                <p>Automated security linting for Terraform, Helm, and CloudFormation.</p>
+                <span class="tech-pill">Checkov / tfsec</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"><i class="fas fa-chevron-down"></i></div>
+
+    <div class="layer">
+        <div class="layer-header" style="color: var(--accent-orange);">
+            <i class="fas fa-microchip"></i> 03. Runtime Protection & Identity
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>eBPF Observability</h3>
+                <p>Low-overhead kernel monitoring for suspicious process behavior.</p>
+                <span class="tech-pill">Falco / Tetragon</span>
+            </div>
+            <div class="card">
+                <h3>Cloud Posture (CSPM)</h3>
+                <p>Continuous scanning for multi-cloud misconfigurations and drift.</p>
+                <span class="tech-pill">Prowler / AWS Security Hub</span>
+            </div>
+            <div class="card">
+                <h3>Secrets Management</h3>
+                <p>Centralized identity-based access for secrets and keys.</p>
+                <span class="tech-pill">HashiCorp Vault / AWS KMS</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"><i class="fas fa-chevron-down"></i></div>
+
+    <div class="layer">
+        <div class="layer-header" style="color: var(--accent-red);">
+            <i class="fas fa-tower-observation"></i> 04. Unified Defense & Response
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Vulnerability Management</h3>
+                <p>Consolidated findings from all scanners into a single remediation workflow.</p>
+                <span class="tech-pill">DefectDojo</span>
+            </div>
+            <div class="card">
+                <h3>SIEM & Detection</h3>
+                <p>Log aggregation, correlation, and Sigma-based alerting rules.</p>
+                <span class="tech-pill">Elastic Security</span>
+            </div>
+            <div class="card">
+                <h3>SOAR / IR</h3>
+                <p>Automated playbooks for incident response and case management.</p>
+                <span class="tech-pill">Tines / TheHive</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="pipeline-section">
+        <h2><i class="fas fa-vial-circle-check"></i> Integrated Security Lifecycle Flow</h2>
+        <div class="pipeline-flow">
+            
+            <div class="flow-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <strong>Architectural Review</strong>
+                    <span>Threat Modeling identifies "Sensitive Data exposure" in a new API. A specific OPA policy is drafted to enforce mTLS.</span>
+                </div>
+                <div class="tag-logic">Strategy</div>
+            </div>
+
+            <div class="flow-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <strong>CI/CD Gate</strong>
+                    <span>Semgrep detects a missing auth check in the PR. Build is failed; results are automatically synced to DefectDojo.</span>
+                </div>
+                <div class="tag-logic">Build</div>
+            </div>
+
+            <div class="flow-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <strong>Supply Chain Validation</strong>
+                    <span>Trivy generates an SBOM for the container image. The image is signed via Cosign before pushing to the Registry.</span>
+                </div>
+                <div class="tag-logic">Supply Chain</div>
+            </div>
+
+            <div class="flow-step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <strong>Runtime Monitoring</strong>
+                    <span>Falco detects an unauthorized terminal shell inside the production Pod. An alert is fired to Elastic SIEM.</span>
+                </div>
+                <div class="tag-logic">Runtime</div>
+            </div>
+
+            <div class="flow-step" style="border-color: rgba(248, 81, 73, 0.4);">
+                <div class="step-num" style="box-shadow: 0 0 15px rgba(248, 81, 73, 0.4);">5</div>
+                <div class="step-content">
+                    <strong>Automated Response</strong>
+                    <span>Tines SOAR playbook triggers: Isolates the network segment, captures Pod logs, and alerts the On-Call Engineer.</span>
+                </div>
+                <div class="tag-logic">Response</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

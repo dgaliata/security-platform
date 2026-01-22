@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Engineering Platform | Live Demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&family=JetBrains+Mono&display=swap');
+
+        :root {
+            --bg: #05070a;
+            --card-bg: #0d1117;
+            --accent-blue: #00d4ff;
+            --accent-purple: #9f7aea;
+            --accent-green: #00ff9d;
+            --accent-red: #ff4d4d;
+            --text: #e6edf3;
+            --dim: #8b949e;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 60px 20px;
+            background-image: radial-gradient(circle at 50% 50%, #111827 0%, #05070a 100%);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p { color: var(--dim); font-size: 1.2rem; margin-top: 10px; }
+
+        /* The Journey Line */
+        .lifecycle {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .lifecycle::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-blue), var(--accent-green), var(--accent-red));
+            opacity: 0.2;
+        }
+
+        .step {
+            position: relative;
+            margin-bottom: 60px;
+            padding-left: 100px;
+            transition: 0.3s;
+        }
+
+        .step-icon {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 42px;
+            height: 42px;
+            background: var(--bg);
+            border: 2px solid var(--accent-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            font-size: 1.2rem;
+        }
+
+        /* Pulse Animation */
+        .step-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: inherit;
+            border-radius: inherit;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .content-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .text-side h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .text-side p {
+            color: var(--dim);
+            margin: 0;
+            font-size: 1rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .tag-side {
+            text-align: right;
+        }
+
+        .pill {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+        }
+
+        /* Color Variations */
+        .s1 .step-icon { border-color: var(--accent-purple); color: var(--accent-purple); }
+        .s1 .step-icon::after { border-color: var(--accent-purple); }
+        
+        .s3 .step-icon { border-color: var(--accent-green); color: var(--accent-green); }
+        .s3 .step-icon::after { border-color: var(--accent-green); }
+
+        .s5 .step-icon { border-color: var(--accent-red); color: var(--accent-red); }
+        .s5 .step-icon::after { border-color: var(--accent-red); }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Security Engineering Platform</h1>
+        <p>A Blueprint for the Modern DevSecOps Lifecycle</p>
+    </div>
+
+    <div class="lifecycle">
+
+        <div class="step s1">
+            <div class="step-icon"><i class="fas fa-chess-knight"></i></div>
+            <div class="content-box">
+                <div class="text-side">
+                    <h2>01. Strategy & Planning</h2>
+                    <p>Embedding security into the architecture phase using Threat Modeling and Policy-as-Code definitions.</p>
+                </div>
+                <div class="tag-side"><span class="pill">Architecture</span></div>
+            </div>
+        </div>
+
+        <div class="step s2">
+            <div class="step-icon"><i class="fas fa-terminal"></i></div>
+            <div class="content-box">
+                <div class="text-side">
+                    <h2>02. Secure Development</h2>
+                    <p>Empowering engineers with local linting and secrets detection to catch flaws at the keyboard.</p>
+                </div>
+                <div class="tag-side"><span class="pill">IDE / Pre-Commit</span></div>
+            </div>
+        </div>
+
+        <div class="step s3">
+            <div class="step-icon"><i class="fas fa-microscope"></i></div>
+            <div class="content-box">
+                <div class="text-side">
+                    <h2>03. Automated Verification</h2>
+                    <p>Continuous Integration gates that scan source code, dependencies (SCA), and infrastructure (IaC).</p>
+                </div>
+                <div class="tag-side"><span class="pill">CI/CD Pipeline</span></div>
+            </div>
+        </div>
+
+        <div class="step s4">
+            <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+            <div class="content-box">
+                <div class="text-side">
+                    <h2>04. Supply Chain Trust</h2>
+                    <p>Generating SBOMs and signing images to ensure artifact integrity from build to deployment.</p>
+                </div>
+                <div class="tag-side"><span class="pill">Attestation</span></div>
+            </div>
+        </div>
+
+        <div class="step s5">
+            <div class="step-icon"><i class="fas fa-shield-virus"></i></div>
+            <div class="content-box">
+                <div class="text-side">
+                    <h2>05. Active Defense</h2>
+                    <p>Real-time runtime observability and automated response to isolate threats in production.</p>
+                </div>
+                <div class="tag-side"><span class="pill">Runtime / SOAR</span></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
