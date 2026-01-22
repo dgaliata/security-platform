@@ -25,12 +25,6 @@ Generating SBOMs and signing images to ensure artifact integrity from build to d
 ### 5. Active Defense
 Real-time runtime observability and automated response to isolate threats in production. Deep kernel visibility using eBPF to detect attacks traditional logs miss.
 
-## What's Included
-
-- **Interactive visualization** showing the flow between security phases
-- **Clean, modern design** with gradient timelines and animations
-- **Mobile-responsive** layout that works on any device
-
 ## Current Status
 
 This is an early-stage experiment. The visualization represents the architectural vision, and I'm currently working through the integration details and tool selection for each phase.
