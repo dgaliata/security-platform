@@ -2,6 +2,12 @@
 
 A visual blueprint for building a unified security engineering platform that integrates security throughout the software development lifecycle.
 
+<div style="text-align: center;">
+  <a href="https://dgaliata.github.io/security-platform/">
+    <img src="https://res.cloudinary.com/dcu6gtw2y/image/upload/v1769059690/sec-platform-blog-img_xvod1l.png" alt="Security Platform" />
+  </a>
+</div>
+
 ## Overview
 
 This project maps out a comprehensive approach to DevSecOps, organizing security capabilities into five interconnected phases that mirror how software is actually built. Instead of treating security as a final checkpoint, this framework embeds it into every stage of development.
