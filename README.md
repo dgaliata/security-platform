@@ -12,7 +12,7 @@ A visual blueprint for building a unified security engineering platform that int
 
 This project maps out a comprehensive approach to DevSecOps, organizing security capabilities into five interconnected phases that mirror how software is actually built. Instead of treating security as a final checkpoint, this framework embeds it into every stage of development.
 
-**[View Live Demo](https://yourusername.github.io/security-platform)**
+**[View Live Demo](https://dgaliata.github.io/security-platform)**
 
 ## The Five Phases
 
